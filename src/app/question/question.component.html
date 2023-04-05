@@ -1,0 +1,58 @@
+<div class="container mt-5">
+    <div class="card p-4">
+        <div class="d-flex justify-content-between p-3">
+            <div class="image">
+                <img src="https://img.icons8.com/color/96/000000/angularjs.png" width="90" alt="logo">
+            </div>
+            <div class="quiz-header">
+                <h4 style="font-family: cursive;">
+                    Angular & TypeScript Quiz!
+                </h4>
+                <span style="font-style : italic ; ">
+                    Welcome User {{ userName }}
+                </span>
+
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-between p-3">
+            <div class="score">
+                <h5>20 points </h5>
+            </div>
+            <div class="question-remain">
+                <span style="font-style: italic;"> Question {{this.currentIndex}} of {{this.questions.length}}</span>
+            </div>
+            <div class="timer">
+                <h5 [ngClass]="timer.class" > {{timer.value}} sec ⏱</h5>
+            </div>
+        </div>
+        <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
+                aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+
+        <div class="question-option-container">
+
+            <div class="questions p-2">
+                <h5>{{this.currentIndex + 1}}. {{this.currentQuestion?.questionText}}</h5>
+            </div>
+            <div class="options">
+                <ul *ngFor="let option of currentQuestion.options ; let i = index   ">
+
+                    <li [ngClass]="currentQuestion.selectedId == i ? 'selected' : 'default'" >
+                        <button class="btn btn-block " (click)="optionSelected(this.currentQuestion , i)">{{option.text}}</button>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+        
+        <div class="d-flex justify-content-between my-3 mx-2 ">
+            <button (click)="nextQuestion()" [ngClass]="this.currentIndex < this.questions.length -1 ? 'active-btn' : 'inactive-btn' "  class="btn"><i class="fa text-primary fa-chevron-right" aria-hidden="true"></i></button>
+            <button class="btn active-btn"><i class="fa fa-refresh text-primary" aria-hidden="true"></i></button>
+            <button (click)="prevQuestion()"  [ngClass]="this.currentIndex > 0 ? 'active-btn' : 'inactive-btn' " class="btn"><i class="fa text-primary fa-chevron-left" aria-hidden="true"></i></button>
+        </div>
+
+
+    </div>
+</div>

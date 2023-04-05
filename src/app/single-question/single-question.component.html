@@ -1,0 +1,42 @@
+<div class="card p-2 my-4" style="width : 500px; margin : auto ;  " >
+
+    <div class="form-group">
+        
+        <div class="row p-3">
+            <label class="col-4"  for="exampleFormControlTextarea1"> Question {{ questions.id }}  </label>
+            <div class="col-2">
+
+                <label for="points"> Points </label>
+            </div>
+            <div class="col-3">
+
+                <input type="number"  id="points" class="form-control"  [(ngModel)]="questions.points"  >
+            </div>
+
+            <div class="col-2">
+
+        <button class="btn"  (click)="deleteQuestion()" ><i class="bi bi-trash"></i></button>
+            </div>
+        </div>
+        <textarea  placeholder="Enter question here"  class="form-control my-4" [(ngModel)]="questions.question" id="exampleFormControlTextarea1"
+        rows="3"></textarea>
+    </div>
+
+    <div class="options-container" style="margin-bottom : 10px "  *ngFor="let option of questions.options ; index as i   "
+        div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <input type="radio" style="width : 100% ; " [name]="'example' + index " [value]="i" [(ngModel)]="questions.correct" aria-label="Radio button for following text input">
+            </div>
+        </div>
+        <input type="text" class="form-control"  placeholder="Enter option here" [(ngModel)]="option.text" aria-label="Text input with radio button">
+
+        <button class="btn"  (click)="deleteOption(i)" ><i class="bi bi-trash"></i></button>
+        <button class="btn" (click)="insertOption(i)"   ><i class="bi bi-plus-circle"></i></button>
+    </div>
+
+    <div class="container">
+        <span *ngIf="!formValid" style="color : red ; " > All fields are required  </span>
+    </div>
+
+</div>

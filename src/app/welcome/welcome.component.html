@@ -1,0 +1,30 @@
+<div class="container bg-light py-5">
+    <h1 class="display-5 fw-bold">
+        Welcome to Simply Test
+    </h1>
+    <p class="col-md-8 fs-4">
+        This quiz will contain total 5 questions
+    </p>
+    <h4>Rules:</h4>
+    <ol>
+        <li>
+            Correct Questions gives you 10 points
+        </li>
+
+        <li>
+           You will have 10 sec to answer each questions
+        </li>
+        <li>
+            Refereshing the page will reset the quiz 
+        </li>
+    </ol>
+    <h1  style="font-family : cursive; text-align : center "> All the Best !!@</h1>
+    <div class="name col-md-4 my-3">
+
+        <label for="">
+            Enter Your Name
+        </label>
+        <input [(ngModel)]="name"  type="text" class="form-control" > 
+        <button  [disabled]="isDisabled()" (click)="onSubmit()" routerLink="/question" class="btn btn-primary btn-md my-3"> Start Test </button> 
+    </div>
+</div>

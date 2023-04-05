@@ -1,0 +1,69 @@
+.active-btn {
+    border : 0px ; 
+    font-size: 22px;
+    font-weight: 800;
+
+    &:hover{
+        transform: scale(1.2);
+    }
+
+    &:active{
+        opacity: 1  ;
+        transform: scale(1);
+    }
+}
+
+.inactive-btn {
+    opacity : 0.5 ; 
+
+    border : 0px ; 
+    font-size: 24px;
+    font-weight: 800;
+    cursor :auto ; 
+}
+
+
+.going{
+    color : darkgreen ; 
+}
+
+.urgent{
+    color : darkred ; 
+}
+
+
+.card{
+    max-width: 700px;
+    margin : 0px auto  ; 
+}
+
+ .options > ul {
+    list-style-type: none;
+    padding : 0px  ; 
+
+
+}
+
+.options > ul > li > button {
+    padding : 6px  ;
+    border-radius: 5px;
+    margin-bottom : 10px ;  
+    border : 1px solid lightgray ;
+    
+    &:hover{
+        border : 1px solid blue ; 
+    }
+}
+
+.btn-block{
+    width : 100% ; 
+
+}
+
+
+.selected {
+    border : 2px solid green ; 
+    color : yellow ; 
+}
+
+
