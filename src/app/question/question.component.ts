@@ -37,6 +37,7 @@ export class QuestionComponent implements OnInit {
     this.questionService.getQuestionJSON().subscribe( (response : any ) => {
       this.questions = response.questions ;  
       this.currentQuestion = this.questions[this.currentIndex]
+      this.questionService.testName.next(response.testName) ; 
       console.log(this.questions)
     })
   }
@@ -51,7 +52,10 @@ export class QuestionComponent implements OnInit {
         timerValue.class = "urgent"
       }
       if(timerValue.value > 0 ){
-        timerValue.value = timerValue.value -1 ; 
+
+
+        timerValue.value = timerValue.value -1 ;
+        this.questionService.timer.next(timerValue) ;  
       }
     } , 1000); 
   }
@@ -76,5 +80,10 @@ export class QuestionComponent implements OnInit {
     console.log(index) ; 
     optionsObj.selectedId =index ;
     console.log(this.questions) 
+  }
+
+  changeQuestion(index : number){
+    this.currentIndex = index ; 
+    this.currentQuestion = this.questions[this.currentIndex] ; 
   }
 }

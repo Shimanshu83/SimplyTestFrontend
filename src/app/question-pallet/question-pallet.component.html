@@ -1,1 +1,7 @@
-<p>question-pallet works!</p>
+<div class="container pallet-container">
+    <div *ngFor="let question of  questions ; index as i " [ngClass]="{ submitted : (question.selectedId != null && question.selectedId != undefined) , currentQuestionSelected : i === currentQuestionSelected} "  (click)="questionChange(i)"  class="single-question">
+        {{i}}
+
+        <!-- (question.selectedId != undefined || question.selectedId != null ) ? 'submitted' : '' -->
+    </div>
+</div>

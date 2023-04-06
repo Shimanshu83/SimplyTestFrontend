@@ -1,3 +1,33 @@
-<nav class="navbar navbar-light bg-primary justify-content-between">
-    <span class="header-text"> Simply Test </span>
-</nav>
+<nav class="nav-container ">
+    <div class="container-for-nav">
+
+    <div>
+        <div>
+            <a class="navbar-brand" >SimplyTest</a>
+            <span  class="testname"  *ngIf="( testName != null && testName != undefined) " >
+             | {{testName}}
+            </span>
+          </div>
+
+        
+    </div>
+
+    <div *ngIf="(timer != null && timer != undefined) " class="div">
+        <div class="time-remaiin">
+          <span> Time  Remaining : </span>
+
+          <span>{{timer.value }}</span>
+
+        </div>
+    </div>
+
+
+    <div *ngIf="(userName != null && userName != undefined) ">
+       <span> {{ userName }} </span>
+    </div>
+
+
+
+       
+    </div>
+  </nav>

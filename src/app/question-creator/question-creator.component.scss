@@ -1,0 +1,27 @@
+
+
+
+.test-header{
+
+    display : flex ; 
+    flex-direction : row ; 
+    justify-content: center;
+    align-content: center;
+    text-align : center ; 
+    
+
+}
+
+.test-header > label {
+    width : 90px ; 
+}
+
+.test-header > input {
+    width : 300px ;
+}
+
+.submit-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

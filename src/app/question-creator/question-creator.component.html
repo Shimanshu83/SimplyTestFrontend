@@ -1,13 +1,8 @@
-<div class="container m-5" style="width : 600px">
+<div class="card my-3 p-3" style="width : 600px ; margin : auto ; ">
 
-    <div class="row my-2">
-        <div class="col-12 d-flex flex-row">
+    <div class="my-3 test-header">
             <label for="testname"> Test Name </label>
             <input id="testname " class="form-control"  type="text">
-        </div>
-
-
-
     </div>
 
     <ng-container *ngFor="let question of questions ; index as i " >
@@ -15,13 +10,8 @@
     </ng-container>
 
     <div class="row">
-        <div class="col-12 d-flex flex-row justify-content-center">
+        <div class="col-12 submit-container">
             <button class="btn btn-primary" (click)="addQuestion()">Add Question</button>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12 d-flex flex-row justify-content-center">
             <button class="btn btn-primary" (click)="submitQuestion()">Submit</button>
         </div>
     </div>

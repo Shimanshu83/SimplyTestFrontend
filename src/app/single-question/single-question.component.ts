@@ -49,7 +49,7 @@ export class SingleQuestionComponent implements OnInit, DoCheck {
 
     if (this.questions.options.length < 6) {
       this.questions.options.splice(index, 0, {
-        text: "Fill the box",
+        text: null,
         correct: false
       });
     }

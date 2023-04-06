@@ -1,4 +1,5 @@
 import { Component } from '@angular/core' ; 
+import { QuestionService } from '../question/question.service';
 import { WelcomeService } from './welcome.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { WelcomeService } from './welcome.service';
 export class WelcomeComponent {
 
   name : String = "" ; 
-  constructor(private welcomeService : WelcomeService) {
+  constructor(private welcomeService : WelcomeService, 
+    private questionService : QuestionService 
+    ) {
 
   } 
 
@@ -20,6 +23,8 @@ export class WelcomeComponent {
 
   onSubmit(){
     this.welcomeService.name = this.name ; 
+    this.questionService.userName.next(this.name) ; 
+    
   }  
 
 

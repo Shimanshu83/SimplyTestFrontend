@@ -1,0 +1,154 @@
+{   "testName" : "DBMS TEST", 
+    "questions": [
+        {
+            "id": 1,
+            "question": "What is the full form of DBMS?",
+            "options": [
+                {
+                    "text": "Data of Binary Management System",
+                    "correct": false
+                },
+                {
+                    "text": " Database Management System",
+                    "correct": false
+                },
+                {
+                    "text": "Database Management Service",
+                    "correct": false
+                },
+                {
+                    "text": " Data Backup Management System",
+                    "correct": false
+                }
+            ],
+            "points": 5,
+            "correct": 1,
+            "formValid": true
+        },
+        {
+            "id": 1,
+            "question": "Who created the first DBMS?",
+            "options": [
+                {
+                    "text": " Edgar Frank Codd",
+                    "correct": false
+                },
+                {
+                    "text": "Charles Bachman",
+                    "correct": false
+                },
+                {
+                    "text": "Charles Babbage",
+                    "correct": false
+                },
+                {
+                    "text": "Sharon B. Codd",
+                    "correct": false
+                }
+            ],
+            "points": 5,
+            "correct": 1,
+            "formValid": true
+        },
+        {
+            "id": 1,
+            "question": "In which of the following formats data is stored in the database management system?",
+            "options": [
+                {
+                    "text": " Image",
+                    "correct": false
+                },
+                {
+                    "text": "Text",
+                    "correct": false
+                },
+                {
+                    "text": "Table",
+                    "correct": false
+                },
+                {
+                    "text": "Graph",
+                    "correct": false
+                }
+            ],
+            "points": 5,
+            "correct": 0,
+            "formValid": true
+        },
+        {
+            "id": 1,
+            "question": "Which of the following is not a type of database?",
+            "options": [
+                {
+                    "text": "Hierarchical",
+                    "correct": false
+                },
+                {
+                    "text": "Network",
+                    "correct": false
+                },
+                {
+                    "text": "Distributed",
+                    "correct": false
+                },
+                {
+                    "text": "Centralized",
+                    "correct": false
+                }
+            ],
+            "points": 0,
+            "correct": 1,
+            "formValid": true
+        },
+        {
+            "id": 1,
+            "question": "Which of the following is not a type of database?",
+            "options": [
+                {
+                    "text": "Hierarchical",
+                    "correct": false
+                },
+                {
+                    "text": "Network",
+                    "correct": false
+                },
+                {
+                    "text": "Distributed",
+                    "correct": false
+                },
+                {
+                    "text": "Centralized",
+                    "correct": false
+                }
+            ],
+            "points": 0,
+            "correct": 1,
+            "formValid": true
+        },
+        {
+            "id": 1,
+            "question": "Which of the following is not a type of database?",
+            "options": [
+                {
+                    "text": "Hierarchical",
+                    "correct": false
+                },
+                {
+                    "text": "Network",
+                    "correct": false
+                },
+                {
+                    "text": "Distributed",
+                    "correct": false
+                },
+                {
+                    "text": "Centralized",
+                    "correct": false
+                }
+            ],
+            "points": 0,
+            "correct": 1,
+            "formValid": true
+        }
+    ]
+}
