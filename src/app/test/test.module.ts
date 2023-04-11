@@ -6,7 +6,6 @@ import { TestQuestionsComponent } from './test-questions/test-questions.componen
 import { TestComponentComponent } from './test-component/test-component.component';
 import { TestService } from './test.service';
 import { RouterModule, Routes } from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,9 +25,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MatInputModule,
     FormsModule,
     CommonModule, BrowserAnimationsModule,
+    BrowserModule
 
   ],
   providers: [

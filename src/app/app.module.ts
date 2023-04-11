@@ -15,7 +15,6 @@ import { QuestionPalletComponent } from './question-pallet/question-pallet.compo
 import { TestModule } from './test/test.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,6 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatInputModule,
     TestModule
   ],
   providers: [],

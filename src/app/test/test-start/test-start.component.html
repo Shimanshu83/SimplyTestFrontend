@@ -32,42 +32,32 @@
                 Fill in the form before starting the test.
             </p>
 
-            <form [formGroup]="myForm" class="test-start-form" (ngSubmit)="onSubmit()">
-
-                <div class="input-controller">
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="First Name" formControlName="first_name" required>
-                        <mat-error *ngIf="myForm.get('first_name')!.hasError('required')">First Name is
-                            required</mat-error>
-                        <mat-error *ngIf="myForm.get('first_name')!.hasError('maxlength')">First Name cannot be longer
-                            than
-                            50 characters</mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="input-controller">
-                    <mat-form-field>
-                        <input matInput placeholder="Last Name" formControlName="last_name">
-                        <mat-error *ngIf="myForm.get('last_name')!.hasError('required')">Last Name is
-                            required</mat-error>
-                        <mat-error *ngIf="myForm.get('last_name')!.hasError('maxlength')">Last Name cannot be longer
-                            than 50
-                            characters</mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="input-controller">
-
-                    <mat-form-field>
-                        <input matInput type="email" placeholder="Email" formControlName="email">
-                        <mat-error *ngIf="myForm.get('email')!.hasError('required')">Email is required</mat-error>
-                        <mat-error *ngIf="myForm.get('email')!.hasError('email')">Please enter a valid email
-                            address</mat-error>
-                    </mat-form-field>
-                </div>
-
-
-                <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+            <form [formGroup]="form" class="test-start-form" (ngSubmit)="onSubmit()">
+                
+                <div class="form-group">
+                    <label for="first-name">First Name <span class="text-danger" >*</span></label>
+                    <input type="text" class="form-control" id="first-name" placeholder="Enter first name" formControlName="firstName">
+                    <div  *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">
+                      <div class="error" *ngIf="form.get('firstName').errors['required']">First name is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name">Last Name <span class="text-danger" >*</span>  </label>
+                    <input type="text" class="form-control" id="last-name" placeholder="Enter last name" formControlName="lastName">
+                    <div  *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">
+                      <div class="error" *ngIf="form.get('lastName').errors['required']">Last name is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email address <span class="text-danger" >*</span>  </label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+                    <div  *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">
+                      <div class="error" *ngIf="form.get('email').errors['required']">Email is required</div>
+                      <div class="error"  *ngIf="form.get('email').errors['email']">Invalid email format</div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success submit-btn" [disabled]="!form.valid">Start Test</button>
+                
             </form>
 
         </div>
