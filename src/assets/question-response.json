@@ -1,0 +1,186 @@
+{
+    "status": true,
+    "message": "Test found",
+    "data": {
+        "user_data": {
+            "first_name": "Shimanshu",
+            "last_name": "Yadav",
+            "email": "shimanshuyadav83@gmail.com"
+        },
+        "testName": "Database Exam",
+        "duration": 3609,
+        "questions": [
+            {
+                "id": "7e08c36e-d51d-48db-b692-9830de7d4379",
+                "question": "What is the full form of DBMS?",
+                "options": [
+                    {
+                        "text": "Data of Binary Management System"
+                    },
+                    {
+                        "text": "Database Management System"
+                    },
+                    {
+                        "text": "Database Management Service"
+                    },
+                    {
+                        "text": "Data Backup Management System"
+                    }
+                ],
+                "points": 2
+            },
+            {
+                "id": "d9e0e1f8-37c9-4e85-bc2a-2e2b963cfe23",
+                "question": "Who created the first DBMS?",
+                "options": [
+                    {
+                        "text": "Edgar Frank Codd"
+                    },
+                    {
+                        "text": "Charles Bachman"
+                    },
+                    {
+                        "text": "Charles Babbage"
+                    },
+                    {
+                        "text": "Sharon B. Codd"
+                    }
+                ],
+                "points": 2
+            },
+            {
+                "id": "c25b5a39-5d5b-49d1-985c-68f6d2a82217",
+                "question": "In which of the following formats data is stored in the database management system?",
+                "options": [
+                    {
+                        "text": "Image"
+                    },
+                    {
+                        "text": "Text"
+                    },
+                    {
+                        "text": "Table"
+                    },
+                    {
+                        "text": "Graph"
+                    }
+                ],
+                "points": 2
+            },
+            {
+                "id": "b36e7ecf-1524-4e62-8e03-9a2ad04adbf4",
+                "question": "Which of the following is not a type of database?",
+                "options": [
+                    {
+                        "text": "Hierarchical"
+                    },
+                    {
+                        "text": "Network"
+                    },
+                    {
+                        "text": "Distributed"
+                    },
+                    {
+                        "text": "Centralized"
+                    }
+                ],
+                "points": 0
+            },
+            {
+                "id": "9b54670d-ecf7-4018-92b1-30821cf56312",
+                "question": "What is normalization in DBMS?",
+                "options": [
+                    {
+                        "text": "Eliminating data redundancy"
+                    },
+                    {
+                        "text": "Organizing data in a specific order"
+                    },
+                    {
+                        "text": "Reducing the amount of data in a database"
+                    },
+                    {
+                        "text": "Eliminating duplicate records"
+                    }
+                ],
+                "points": 2
+            },
+            {
+                "id": "580870e5-9c9b-4c2c-a153-8098a89e4b4f",
+                "question": "What is the purpose of a primary key in a database table?",
+                "options": [
+                    {
+                        "text": "To identify unique rows in the table"
+                    },
+                    {
+                        "text": "To store sensitive information securely"
+                    },
+                    {
+                        "text": "To improve database performance"
+                    },
+                    {
+                        "text": "To join tables together"
+                    }
+                ],
+                "points": 2
+            },
+            {
+                "id": "cde0b233-a3b3-42f7-9c75-8201440b097f",
+                "question": "What is encapsulation in object-oriented programming?",
+                "options": [
+                    {
+                        "text": "Combining data and functions in a single unit"
+                    },
+                    {
+                        "text": "Storing data in a database"
+                    },
+                    {
+                        "text": "Creating multiple instances of a class"
+                    },
+                    {
+                        "text": "Grouping related data together"
+                    }
+                ],
+                "points": 3
+            },
+            {
+                "id": "7207f8e9-273e-4d5d-a16f-1e37ed53da71",
+                "question": "What is the difference between HTML and XHTML?",
+                "options": [
+                    {
+                        "text": "HTML is case-sensitive, while XHTML is not"
+                    },
+                    {
+                        "text": "XHTML allows for custom tags, while HTML does not"
+                    },
+                    {
+                        "text": "XHTML requires all tags to be closed, while HTML does not"
+                    },
+                    {
+                        "text": "HTML is a markup language, while XHTML is a scripting language"
+                    }
+                ],
+                "points": 4
+            },
+            {
+                "id": "5c9837c8-6369-4e5d-9ed6-4e6b4f72c692",
+                "question": "What is the difference between a stack and a queue?",
+                "options": [
+                    {
+                        "text": "A stack follows a LIFO (last in, first out) order, while a queue follows a FIFO (first in, first out) order"
+                    },
+                    {
+                        "text": "A stack allows for insertion and deletion at both ends, while a queue allows for insertion at the back and deletion at the front"
+                    },
+                    {
+                        "text": "A stack is used for breadth-first traversal, while a queue is used for depth-first traversal"
+                    },
+                    {
+                        "text": "A stack is implemented using linked lists, while a queue is implemented using arrays"
+                    }
+                ],
+                "points": 5
+            }
+        ]
+    }
+}

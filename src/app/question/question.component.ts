@@ -88,9 +88,7 @@ export class QuestionComponent implements OnInit {
 
     timeObj.sec = time;
 
-    return Object.keys(timeObj).reduce((accm, curr) => {
-      return accm + `${timeObj[curr]} ${curr} `;
-    }, "")
+    return
 
   }
 

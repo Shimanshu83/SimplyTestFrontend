@@ -1,0 +1,9 @@
+{
+    "status": true,
+    "message": "Test found",
+    "data": {
+        "id": "f95e8ca9-9e81-4f0c-8a5b-ff4312fcb69e",
+        "test_name": "Database Exam",
+        "instructions": "<p>Hello!</p><p>This test consists of 5 questions. You have 30 minutes to solve it.</p><p>Make sure you have enough time and then start the test.</p><p>&nbsp;</p><p><strong>Good Luck !</strong></p>"
+    }
+}

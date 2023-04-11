@@ -7,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class QuestionCreatorService {
 
   submitFired = new Subject<boolean>();
-  constructor() { 
+  constructor() {
 
   }
 

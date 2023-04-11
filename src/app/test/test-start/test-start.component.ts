@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TestService } from '../test.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
@@ -10,13 +11,24 @@ import { TestService } from '../test.service';
 })
 export class TestStartComponent implements OnInit {
   form!: FormGroup;
+  instructions !: SafeHtml;
+  testName !: string;
   constructor(private formBuilder: FormBuilder,
-       private testService : TestService 
-    ) { }
+    private testService: TestService,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
-    
+    this.testService.getTestDetail().subscribe(testData => {
+      if (testData.status == true) {
+        this.testName = testData.data["test_name"];
+        this.instructions = this.sanitizer.bypassSecurityTrustHtml(testData.data["instructions"]);
+
+        this.testService.testName.next(this.testName);
+      }
+    })
+
   }
   createForm(): void {
     this.form = this.formBuilder.group({
@@ -27,14 +39,15 @@ export class TestStartComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
-    // so whenever some one submit this 
-    // what we need to do is submit the form to server 
-    // and in response we will get the questions details 
-    // set the questions details in the service 
-    // after all this we will change the status event 
-    // start the timer 
-    this.testService.status.next("test-continue")
+    this.testService.submitUserAndGetTestData().subscribe(testData => {
+
+      if (testData.status === true) {
+        this.testService.duration.next(testData.data.duration);
+        this.testService.questions.next(testData.data.questions);
+        this.testService.userName.next(`${testData.data.user_data.first_name} ${testData.data.user_data.last_name}`);
+        this.testService.status.next("test-continue")
+      }
+    })
   }
 
 }

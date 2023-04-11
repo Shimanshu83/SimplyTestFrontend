@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { TestHeaderComponent } from './test-header/test-header.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
     TestStartComponent,
     TestEndComponent,
     TestQuestionsComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    TestHeaderComponent
   ],
   imports: [
     RouterModule.forChild(routes),
