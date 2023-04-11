@@ -12,6 +12,10 @@ import { CommonModule } from '@angular/common';
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { SingleQuestionComponent } from './single-question/single-question.component';
 import { QuestionPalletComponent } from './question-pallet/question-pallet.component';
+import { TestModule } from './test/test.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +24,18 @@ import { QuestionPalletComponent } from './question-pallet/question-pallet.compo
     HeaderComponent,
     QuestionCreatorComponent,
     SingleQuestionComponent,
-    QuestionPalletComponent
+    QuestionPalletComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    TestModule
   ],
   providers: [],
   bootstrap: [AppComponent]

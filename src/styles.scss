@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-$backgroundColor : #F1F5F8 ; 
-$primaryColor : #FFFFFF; 
-$secondaryColor : #49C279 ;
-$textPrimaryColor : #064751 ;
+$backgroundColor : #F1F5F8;
+$primaryColor : #FFFFFF;
+$secondaryColor : #49C279;
+$textPrimaryColor : #064751;
 
 
-body{
-    background-color:  $backgroundColor;
+body {
+    background-color: $backgroundColor;
 }
+
+* {
+    font-family: Aktiv Grotesk, sans-serif;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

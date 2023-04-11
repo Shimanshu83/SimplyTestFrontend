@@ -1,0 +1,75 @@
+<div class="welcome-container">
+    <h5 class="heading common-boxing">
+        Mathematics Exam for you all
+    </h5>
+    <div class="instruction common-boxing ">
+        <h4>
+            Instructions
+        </h4>
+        <div class="instructions-text">
+            <p>Hello!</p>
+            <p>
+                This test consists of 5 questions. You have 30 minutes to solve it.
+            </p>
+            <p>
+                Make sure you have enough time and then start the test.
+            </p>
+            <p>
+                &nbsp;
+            </p>
+            <p>
+                <strong> Good Luck ! </strong>
+            </p>
+        </div>
+
+    </div>
+    <div class="test-form common-boxing">
+        <h4>Start the test</h4>
+
+        <div class="form-container">
+
+            <p>
+                Fill in the form before starting the test.
+            </p>
+
+            <form [formGroup]="myForm" class="test-start-form" (ngSubmit)="onSubmit()">
+
+                <div class="input-controller">
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="First Name" formControlName="first_name" required>
+                        <mat-error *ngIf="myForm.get('first_name')!.hasError('required')">First Name is
+                            required</mat-error>
+                        <mat-error *ngIf="myForm.get('first_name')!.hasError('maxlength')">First Name cannot be longer
+                            than
+                            50 characters</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-controller">
+                    <mat-form-field>
+                        <input matInput placeholder="Last Name" formControlName="last_name">
+                        <mat-error *ngIf="myForm.get('last_name')!.hasError('required')">Last Name is
+                            required</mat-error>
+                        <mat-error *ngIf="myForm.get('last_name')!.hasError('maxlength')">Last Name cannot be longer
+                            than 50
+                            characters</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-controller">
+
+                    <mat-form-field>
+                        <input matInput type="email" placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="myForm.get('email')!.hasError('required')">Email is required</mat-error>
+                        <mat-error *ngIf="myForm.get('email')!.hasError('email')">Please enter a valid email
+                            address</mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>

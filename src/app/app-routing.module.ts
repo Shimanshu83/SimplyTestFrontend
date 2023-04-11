@@ -6,11 +6,11 @@ import { SingleQuestionComponent } from './single-question/single-question.compo
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
-  {path : '' , redirectTo : 'welcome' , pathMatch : "full"}, 
-  {path : "welcome" , component : WelcomeComponent}, 
-  {path : "question" , component : QuestionComponent}, 
-  {path : "single_question" , component : QuestionCreatorComponent}, 
-  {path : "*" , redirectTo : "welcome" , pathMatch : "full"}
+  { path: '', redirectTo: 'welcome', pathMatch: "full" },
+  { path: "welcome", component: WelcomeComponent },
+  { path: "question", component: QuestionComponent },
+  { path: "single_question", component: QuestionCreatorComponent },
+  { path: "*", redirectTo: "welcome", pathMatch: "full" }
 ];
 
 @NgModule({
