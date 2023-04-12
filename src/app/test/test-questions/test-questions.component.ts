@@ -14,6 +14,8 @@ export class TestQuestionsComponent implements OnInit {
   currentQuestion: any = {};
   totalQuestion : number = 0;
 
+  visible : boolean = false ; 
+
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
@@ -28,6 +30,11 @@ export class TestQuestionsComponent implements OnInit {
     this.testService.duration.subscribe(
       value => {
         this.durations = value;
+        setTimeout(() => {
+
+          this.finishTest() ; 
+          
+        }, this.durations * 1000);
         this.timerFunction({ value: this.durations, class: "going" });
 
       }
@@ -96,11 +103,20 @@ export class TestQuestionsComponent implements OnInit {
   }
 
   submitAnswer(currentIndex){
-
+    this.visible = true ; 
     setTimeout(() => {
-      
+      this.visible = false ; 
       this.questions[currentIndex].submit = true ; 
-    }, 500);
+    }, 1000);
+  }
+
+  changeQuestion(index: number) {
+    this.currentIndex = index;
+    this.currentQuestion = this.questions[this.currentIndex];
+  }
+
+  finishTest(){
+    this.testService.status.next("end") ; 
   }
 
 

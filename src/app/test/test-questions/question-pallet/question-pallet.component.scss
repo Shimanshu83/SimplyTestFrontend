@@ -1,0 +1,40 @@
+.pallet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100% ;
+    margin : 10px ; 
+
+}
+
+.single-question {
+    
+    width: 20%;
+    height : 20% ; 
+    background-color: #fff;
+    border: 1px solid lightgrey;
+    border-radius: 10px ;
+    align-items: center;
+    text-align: center;
+    color :  black ;
+    box-sizing: border-box;
+    margin : 5px ; 
+    font-size: 1.1rem;
+    font-weight: 500;
+    
+    &:hover{
+         cursor : pointer ; 
+         transform : scale(1.1) ; 
+    }
+}
+
+.submitted{
+    background-color: #49C279 ; 
+    color : white  !important ; 
+}
+
+.currentQuestionSelected{
+    border : 1px solid black ; 
+    color : black ;
+    transform : scale(1.1) ; 
+}

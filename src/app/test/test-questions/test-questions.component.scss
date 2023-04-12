@@ -73,9 +73,6 @@
 .options {
 
     margin: 1.2rem;
-
-
-
     line-height: 1.5rem;
     font-weight: 400;
     letter-spacing: 0;
@@ -105,4 +102,30 @@
 .form-check-input[type="radio"]:not(:checked)+.form-check-label::before {
     background-color: #fff;
     border-color: #28a745;
+}
+
+
+// css for modal. 
+
+.conformation-popup-container {
+    // border: none;
+    padding : 15px ; 
+    background-color: white;
+
+    h5 {
+        margin: 10px 5px;
+        font-weight: bolder ;
+    }
+
+    p {
+        margin: 10px 5px;
+        line-height: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-decoration: inherit;
+        text-transform: inherit;
+        word-break: break-word;
+        color : gray ; 
+    }
+
 }
