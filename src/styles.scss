@@ -4,7 +4,7 @@
 $backgroundColor : #F1F5F8;
 $primaryColor : #FFFFFF;
 $secondaryColor : #49C279;
-$secondaryColorShades1 :  #46c87ab2; 
+$secondaryColorShades1 : #46c87ab2;
 $textPrimaryColor : #064751;
 
 
@@ -15,5 +15,24 @@ body {
 * {
     font-family: Aktiv Grotesk, sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.common-boxing {
+    border: none;
+    box-shadow: 3px 4px 10px rgba(201, 216, 225, .34);
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 18px;
+    font-size: none;
+}

@@ -10,6 +10,9 @@ export class TestQuestionsComponent implements OnInit {
 
   questions: any;
   durations: any = 0;
+  currentIndex: number = 0;
+  currentQuestion: any = {};
+
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
@@ -72,6 +75,21 @@ export class TestQuestionsComponent implements OnInit {
     timeString += remainingSeconds + ' sec';
 
     return timeString.trim();
+  }
+
+
+  nextQuestion() {
+    if (this.currentIndex < (this.questions.length - 1)) {
+      this.currentIndex = this.currentIndex + 1;
+      this.currentQuestion = this.questions[this.currentIndex];
+    }
+  }
+
+  prevQuestion() {
+    if (this.currentIndex > 0) {
+      this.currentIndex = this.currentIndex - 1;
+      this.currentQuestion = this.questions[this.currentIndex];
+    }
   }
 
 

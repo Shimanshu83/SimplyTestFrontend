@@ -1,1 +1,28 @@
-<p>test-questions works!</p>
+<div class="main-container">
+
+    <div class="single-question-container common-boxing">
+
+
+
+        <div class="d-flex justify-content-between my-3 mx-2 ">
+            <button (click)="nextQuestion()"
+                [ngClass]="this.currentIndex < this.questions.length -1 ? 'active-btn' : 'inactive-btn' " class="btn"><i
+                    class="fa text-primary fa-chevron-right" aria-hidden="true"></i></button>
+            <button class="btn active-btn"><i class="fa fa-refresh text-primary" aria-hidden="true"></i></button>
+            <button (click)="prevQuestion()" [ngClass]="this.currentIndex > 0 ? 'active-btn' : 'inactive-btn' "
+                class="btn"><i class="fa text-primary fa-chevron-left" aria-hidden="true"></i></button>
+        </div>
+
+    </div>
+
+    <div class="question-pallet-container common-boxing ">
+        <div class="question-pallet common-boxing">
+
+        </div>
+        <div class="finish-test-container">
+
+            <button class="btn  btn-outline-danger btn-lg"> Finsih Test </button>
+
+        </div>
+    </div>
+</div>
