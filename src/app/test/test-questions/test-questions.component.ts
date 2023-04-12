@@ -12,6 +12,7 @@ export class TestQuestionsComponent implements OnInit {
   durations: any = 0;
   currentIndex: number = 0;
   currentQuestion: any = {};
+  totalQuestion : number = 0;
 
   constructor(private testService: TestService) { }
 
@@ -20,6 +21,8 @@ export class TestQuestionsComponent implements OnInit {
     this.testService.questions.subscribe(
       value => {
         this.questions = value;
+        this.totalQuestion = this.questions.length;
+        this.currentQuestion = this.questions[this.currentIndex] ; 
       }
     )
     this.testService.duration.subscribe(
@@ -53,7 +56,6 @@ export class TestQuestionsComponent implements OnInit {
   }
 
   /**
-  * 
   * @param seconds accepts seconds and return string with hour min and seconds value 
   * 60s = 1min 
   * 60*60 = 1hour 
@@ -89,7 +91,16 @@ export class TestQuestionsComponent implements OnInit {
     if (this.currentIndex > 0) {
       this.currentIndex = this.currentIndex - 1;
       this.currentQuestion = this.questions[this.currentIndex];
+
     }
+  }
+
+  submitAnswer(currentIndex){
+
+    setTimeout(() => {
+      
+      this.questions[currentIndex].submit = true ; 
+    }, 500);
   }
 
 

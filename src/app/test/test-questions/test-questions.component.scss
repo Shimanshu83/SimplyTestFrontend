@@ -1,4 +1,4 @@
-@import "src/styles.scss";
+// @import "src/styles.scss";
 
 .main-container {
     width: 70%;
@@ -6,13 +6,15 @@
     padding-top: 25px;
     padding-bottom: 25px;
     margin: auto;
-    border: 2px solid red;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: start;
+
+
 }
 
-.single-question-container {
+.question-container {
     width: 65%;
 
 }
@@ -31,6 +33,7 @@
     font-size: 22px;
     font-weight: 800;
 
+
     &:hover {
         transform: scale(1.2);
     }
@@ -41,11 +44,65 @@
     }
 }
 
+.icon-postion {
+    color: #49C279;
+}
+
 .inactive-btn {
     opacity: 0.5;
-
     border: 0px;
     font-size: 24px;
     font-weight: 800;
     cursor: auto;
+}
+
+
+// questions css in progress. 
+
+
+.single-question-container {
+    margin: 1.5rem;
+
+    h5 {
+        font-size: medium;
+        font-weight: 800;
+        margin-bottom: 2rem;
+    }
+}
+
+.options {
+
+    margin: 1.2rem;
+
+
+
+    line-height: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-decoration: inherit;
+    text-transform: inherit;
+    word-break: break-word;
+
+    .form-check-input {
+        font-size: large;
+        margin-right: 1.2rem;
+    }
+
+    .form-check-label {
+        font-size: small;
+
+        word-break: break-word;
+
+    }
+
+}
+
+.form-check-input[type="radio"]:checked+.form-check-label::before {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.form-check-input[type="radio"]:not(:checked)+.form-check-label::before {
+    background-color: #fff;
+    border-color: #28a745;
 }

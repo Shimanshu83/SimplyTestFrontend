@@ -4,8 +4,8 @@ import { HttpClient } from "@angular/common/http"
 
 @Injectable()
 export class TestService {
-
-  status = new BehaviorSubject<String>("test-continue");
+  // test-continue
+  status = new BehaviorSubject<String>("start");
   userName = new BehaviorSubject<String | null>(null);
   timer = new BehaviorSubject<any>(null);
   testName = new BehaviorSubject<String | null>(null);
