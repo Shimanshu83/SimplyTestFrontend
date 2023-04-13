@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { QuestionService } from '../question/question.service';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +11,7 @@ export class HeaderComponent {
   timer : any ; 
   testName : any ; 
 
-  constructor(private questionService : QuestionService ){
-    questionService.userName.subscribe((value) => {
-      this.userName = value ; 
-    }) ; 
-    
-    questionService.timer.subscribe((value) => {
-      this.timer = value ; 
-    }) ; 
-
-    questionService.testName.subscribe((value) => {
-      this.testName = value ; 
-    }) ; 
+  constructor(){
   }
 
   

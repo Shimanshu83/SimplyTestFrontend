@@ -15,6 +15,7 @@ import { QuestionPalletComponent } from './question-pallet/question-pallet.compo
 import { TestModule } from './test/test.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    TestModule
+    TestModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
