@@ -15,12 +15,12 @@
 }
 
 .question-container {
-    width: 65%;
+    width: 70%;
 
 }
 
 .question-pallet-container {
-    width: 30%;
+    width: 24%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,12 +109,12 @@
 
 .conformation-popup-container {
     // border: none;
-    padding : 15px ; 
+    padding: 15px;
     background-color: white;
 
     h5 {
         margin: 10px 5px;
-        font-weight: bolder ;
+        font-weight: bolder;
     }
 
     p {
@@ -125,7 +125,7 @@
         text-decoration: inherit;
         text-transform: inherit;
         word-break: break-word;
-        color : gray ; 
+        color: gray;
     }
 
 }

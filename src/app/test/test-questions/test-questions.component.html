@@ -65,31 +65,23 @@
 
             <div class="conformation-popup-container">
 
-            
-            <h5>
-                conformation
-            </h5>
 
-            <p>
-                Are you sure to finish the test?
-            </p>
+                <h5>
+                    conformation
+                </h5>
 
-            <div class="modal-footer">
-                <button type="button" id="close-conformation-modal" class="btn btn-md  btn-success" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-md btn-light" (click)="finishTest()" >Yes</button>
+                <p>
+                    Are you sure to finish the test?
+                </p>
+
+                <div class="modal-footer">
+                    <button type="button" #disablePopUp id="close-conformation-modal" class="btn btn-md  btn-success"
+                        data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-md btn-light" (click)="finishTest()">Yes</button>
+                </div>
+
             </div>
 
         </div>
-
-        </div>
-        <!-- <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Conformation</h5>
-        </div>
-        <p class="modal-body">
-            Are you sure you want to end the test?
-        </p>
-        
-      </div> -->
     </div>
 </div>

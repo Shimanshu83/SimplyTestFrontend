@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TestService } from '../test.service';
 
 @Component({
@@ -12,9 +12,11 @@ export class TestQuestionsComponent implements OnInit {
   durations: any = 0;
   currentIndex: number = 0;
   currentQuestion: any = {};
-  totalQuestion : number = 0;
+  totalQuestion: number = 0;
 
-  visible : boolean = false ; 
+  visible: boolean = false;
+
+  @ViewChild('disablePopUp') childRef: ElementRef;
 
   constructor(private testService: TestService) { }
 
@@ -24,7 +26,7 @@ export class TestQuestionsComponent implements OnInit {
       value => {
         this.questions = value;
         this.totalQuestion = this.questions.length;
-        this.currentQuestion = this.questions[this.currentIndex] ; 
+        this.currentQuestion = this.questions[this.currentIndex];
       }
     )
     this.testService.duration.subscribe(
@@ -32,8 +34,8 @@ export class TestQuestionsComponent implements OnInit {
         this.durations = value;
         setTimeout(() => {
 
-          this.finishTest() ; 
-          
+          this.finishTest();
+
         }, this.durations * 1000);
         this.timerFunction({ value: this.durations, class: "going" });
 
@@ -102,11 +104,11 @@ export class TestQuestionsComponent implements OnInit {
     }
   }
 
-  submitAnswer(currentIndex){
-    this.visible = true ; 
+  submitAnswer(currentIndex) {
+    this.visible = true;
     setTimeout(() => {
-      this.visible = false ; 
-      this.questions[currentIndex].submit = true ; 
+      this.visible = false;
+      this.questions[currentIndex].submit = true;
     }, 1000);
   }
 
@@ -115,8 +117,10 @@ export class TestQuestionsComponent implements OnInit {
     this.currentQuestion = this.questions[this.currentIndex];
   }
 
-  finishTest(){
-    this.testService.status.next("end") ; 
+  finishTest() {
+    this.testService.timer.next(null);
+    this.testService.status.next("end");
+    this.childRef.nativeElement.click();
   }
 
 
