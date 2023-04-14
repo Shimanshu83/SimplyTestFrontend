@@ -40,49 +40,37 @@
     }
 
 }
+.status-chip-cotainer{
+    display: flex;
+}
 
 .test-status{
-    border : 2px solid red ; 
+    // border : 2px solid red ; 
     display: flex;
     flex-direction: row;
-    justify-content : flex-start;
+    justify-content : space-between;
     width : 100%; 
     text-align: center;
     margin-bottom: 15px;
 }
 
 .test-delete{
-    // justify-self: flex-end ;
-    // align-self: flex-endj;
 
-    align-self : flex-end;
+    button {
+        border : none ; 
+        background-color:  white;
+        text-decoration: none;
+        color : var(--bs-danger); 
+        font-weight: 800;
+        font-size: 1.2rem;
+        &:hover{
+            transform : scale(1.1) ; 
+        }
+    }
 
 }
 
 
-
-.status-chip{
-    padding : 3px 6px ; 
-    font-size : 12px ;
-    border : 1px solid lightgray ; 
-    border-radius: 5px ;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-right : 15px ; 
-}
-
-.statusChipActive {
-    color : var(--bs-success) ;
-    border-color : var(--bs-success) ;
-}
-.statusChipInactive {
-    color : var(--bs-danger) ; 
-    border-color : var(--bs-danger) ; 
-}
-.statusChipSetup {
-    color : var(--bs-info) ; 
-    border-color : var(--bs-info) ; 
-}
 
 
 .status-createdat{
@@ -90,4 +78,17 @@
     font-size: 14px;
     font-weight: 600;
     align-self: center;
+}
+
+
+.test-description-heading{
+    padding : 10px 0px 0px 0px; 
+    h4{
+        font-weight: 600 ; 
+    }
+
+    p{
+        color : gray ; 
+        font-size: 0.9rem ;
+    }
 }

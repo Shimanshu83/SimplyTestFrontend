@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '_test-conf-scss.scss';
 
 $backgroundColor : #F1F5F8;
 $primaryColor : #FFFFFF;
@@ -7,6 +8,17 @@ $secondaryColor : #49C279;
 $secondaryColorShades1 : #46c87ab2;
 $textPrimaryColor : #064751;
 
+
+
+:root{
+
+    --backgroundColor : #F1F5F8;
+    --primaryColor : #FFFFFF;
+    --secondaryColor : #49C279;
+    --secondaryColorShades1 : #46c87ab2;
+    --textPrimaryColor : #064751;
+    --sub-text-color : #505d6b; 
+}
 
 body {
     background-color: $backgroundColor;
@@ -35,4 +47,30 @@ body {
     padding: 20px;
     margin-bottom: 18px;
     font-size: none;
+}
+
+
+// status chip  css code 
+
+.status-chip{
+    padding : 3px 6px ; 
+    font-size : 12px ;
+    border : 1px solid lightgray ; 
+    border-radius: 5px ;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right : 15px ; 
+}
+
+.statusChipActive {
+    color : var(--bs-success) ;
+    border-color : var(--bs-success) ;
+}
+.statusChipInactive {
+    color : var(--bs-danger) ; 
+    border-color : var(--bs-danger) ; 
+}
+.statusChipSetup {
+    color : var(--bs-purple) ; 
+    border-color : var(--bs-purple) ; 
 }

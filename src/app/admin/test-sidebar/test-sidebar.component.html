@@ -1,1 +1,45 @@
-<p>test-sidebar works!</p>
+<div class="sidebar-test-wrapper">
+
+    <div class="status-chip-container">
+        <div class="status-chip statusChipSetup">
+            setup in progress
+        </div>
+    </div>
+
+    <div class="test-side-navbar">
+
+        <h5>Test Configuration</h5>
+        <ul>
+            <li class="sidebar-btn-active"  [routerLink]="['basic-setting']" >
+                <i class="bi bi-gear-fill"></i>
+                    <span > Basic Setting   </span>        
+            </li>
+            <li class="sidebar-btn-inactive">
+                <i class="bi bi-question-octagon-fill"></i>
+
+                <span> Question Manager  </span>
+                       
+            </li>
+
+            <li class="sidebar-btn-selected" >
+                <i class="bi bi-calendar2-check-fill"></i>
+                <span>
+                    Time / Access Setting 
+                </span>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="test-side-navbar">
+
+        <h5>Result Management</h5>
+        <ul>
+            <li>
+                <i class="bi bi-gear-fill"></i>
+                    <span > Result Table   </span>        
+            </li>
+        </ul>
+
+    </div>
+</div>
