@@ -1,1 +1,39 @@
-<p>test-basic-setting works!</p>
+<div class="test-basic-setting-container">
+    <h5> Basic Setting </h5>
+
+    <div class="common-boxing ">
+        <h6 class="initial-heading">
+            Initial Setting
+        </h6>
+
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="testName">Test Name</label>
+              <input type="text" class="form-control" id="testName" formControlName="testName">
+            </div>
+            <div class="form-group">
+              <label for="testCode">Test Code</label>
+              <input type="text" class="form-control" id="testCode" formControlName="testCode">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" formControlName="description"></textarea>
+            </div>
+            <div class=" form-group">
+                <label for="termsCondition">Terms & Condition</label>
+                <div class="editor">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                    </ngx-editor-menu>
+                    <ngx-editor [editor]="editor" formControlName="termsCondition">
+                    </ngx-editor>
+                </div>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary" [disabled]="!testForm.valid">Submit</button> -->
+          </form>
+          
+    </div>
+
+    <button class="btn btn-success" >
+        Save
+    </button>
+</div>
