@@ -1,12 +1,12 @@
 <div class="test-basic-setting-container">
   <h5 class="test-heading"> Basic Setting </h5>
 
-  <form [formGroup]="testForm" class="basic-test-from" (ngSubmit)="onSubmit()">
-    <div class="common-boxing ">
-      <h6 class="initial-heading">
-        Initial Setting
-      </h6>
-
+  <div class="common-boxing ">
+    <h6 class="initial-heading">
+      Initial Setting
+    </h6>
+    
+    <form [formGroup]="testForm" class="basic-test-from" >
       <div class="row">
         <div class="form-group col-md-6">
           <label for="testName" class="required-field">Test Name</label>
@@ -37,11 +37,11 @@
         </div>
       </div>
       <!-- <button type="submit" class="btn btn-primary" [disabled]="!testForm.valid">Submit</button> -->
+    </form>
 
     </div>
 
-    <button type="submit" [disabled]="!testForm.valid" class="last-submit-btn btn btn-success">
+    <button type="submit" (click)="onSubmit()" [disabled]="!testForm.valid" class="last-submit-btn btn btn-success">
       Save
     </button>
-  </form>
 </div>

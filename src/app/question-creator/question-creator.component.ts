@@ -21,11 +21,12 @@ interface value {
 })
 export class QuestionCreatorComponent {
 
-  questions  : value[]= []
+  questions  : any[]= [] ; 
 
 
   constructor( private questionCreatorService : QuestionCreatorService ){}
 
+  
   addQuestion(){
     this.questions.push({
       id : 1 , 

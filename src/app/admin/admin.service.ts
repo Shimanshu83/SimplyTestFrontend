@@ -5,13 +5,6 @@ import { HttpClient } from "@angular/common/http"
 
 @Injectable()
 export class AdminService {
-    /**
-     * initialize
-     * basicSettingDone -->
-     * Activated ---> 
-     * 
-     */
-    testState = new BehaviorSubject("initialize");
 
     constructor(private httpClient: HttpClient) {
 

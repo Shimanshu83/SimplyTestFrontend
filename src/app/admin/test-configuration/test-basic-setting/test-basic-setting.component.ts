@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
 import { AdminService } from '../../admin.service';
+import { TestConfigurationService } from '../test-configuration.service';
 @Component({
   selector: 'app-test-basic-setting',
   templateUrl: './test-basic-setting.component.html',
@@ -25,7 +26,7 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private fb: FormBuilder, private adminService: AdminService) { }
+  constructor(private fb: FormBuilder, private adminService: AdminService , private testConfigurationService : TestConfigurationService) { }
 
   ngOnInit(): void {
 
@@ -44,7 +45,7 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.testForm.value);
-    this.adminService.testState.next('basicSettingDone');
+    this.testConfigurationService.testState.next('basicSettingDone');
   }
 
 

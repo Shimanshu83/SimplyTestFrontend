@@ -24,7 +24,7 @@ import { AdminModule } from './admin/admin.module';
     HeaderComponent,
     QuestionCreatorComponent,
     SingleQuestionComponent,
-    QuestionPalletComponent,
+    QuestionPalletComponent
   ],
   imports: [
     BrowserModule,

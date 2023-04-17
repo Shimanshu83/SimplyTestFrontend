@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
+import { TestConfigurationService } from '../test-configuration/test-configuration.service';
 
 @Component({
   selector: 'app-test-sidebar',
@@ -10,7 +11,7 @@ export class TestSidebarComponent implements OnInit {
 
 
   testStatus: string;
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private testConfigurationService : TestConfigurationService) { }
 
   ngOnInit(): void {
     /**
@@ -19,7 +20,7 @@ export class TestSidebarComponent implements OnInit {
     * Activated ---> 
     * 
     */
-    this.adminService.testState.subscribe(status =>
+    this.testConfigurationService.testState.subscribe(status =>
       this.testStatus = status
     );
 

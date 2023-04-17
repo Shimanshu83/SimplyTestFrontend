@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxEditorModule } from "ngx-editor";
+import { TestConfigurationService } from './test-configuration/test-configuration.service';
+import { TestSingleQuestionComponent } from "./test-configuration/test-single-question/test-single-question.component"
 
 const routes : Routes = [
   {path : "admin" , component : TestListingComponent},
@@ -22,8 +24,10 @@ const routes : Routes = [
 
   { path : "basic-setting", component : TestBasicSettingComponent},
   { path : "question-manager", component : TestQuestionManagerComponent},
+  { path : "question-manager/questions/:questionId", component :TestSingleQuestionComponent },
   { path : "time-access-setting", component : TestTimeAccessSettingComponent},
-  { path : "result-table", component : TestResultTableComponent }
+  { path : "result-table", component : TestResultTableComponent },
+  {path : "" , redirectTo : "basic-setting" , pathMatch : "full"}
     ]
   },
 ]
@@ -37,7 +41,8 @@ const routes : Routes = [
     TestBasicSettingComponent,
     TestQuestionManagerComponent,
     TestTimeAccessSettingComponent,
-    TestResultTableComponent
+    TestResultTableComponent,
+    TestSingleQuestionComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -49,7 +54,8 @@ const routes : Routes = [
     NgxEditorModule
   ],
   providers :[
-    AdminService
+    AdminService,
+    TestConfigurationService
   ]
 })
 export class AdminModule { }
