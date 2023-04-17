@@ -35,6 +35,7 @@
         font-weight: 600px;
         color: var(--sub-text-color);
         border-radius: 10px;
+        cursor: pointer;
     }
 
 }
@@ -42,11 +43,13 @@
 .sidebar-btn-active {
     &:hover {
         background-color: white;
+
         span {
             color: black;
         }
+
         i {
-            color: var(--secondaryColor);
+            color: var(--secondaryColors);
         }
     }
 
@@ -66,6 +69,6 @@
     }
 
     i {
-        color: var(--secondaryColor);
+        color: var(--secondaryColors);
     }
 }

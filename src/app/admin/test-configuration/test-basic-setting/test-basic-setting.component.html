@@ -1,39 +1,47 @@
 <div class="test-basic-setting-container">
-    <h5> Basic Setting </h5>
+  <h5 class="test-heading"> Basic Setting </h5>
 
+  <form [formGroup]="testForm" class="basic-test-from" (ngSubmit)="onSubmit()">
     <div class="common-boxing ">
-        <h6 class="initial-heading">
-            Initial Setting
-        </h6>
+      <h6 class="initial-heading">
+        Initial Setting
+      </h6>
 
-        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="testName">Test Name</label>
-              <input type="text" class="form-control" id="testName" formControlName="testName">
-            </div>
-            <div class="form-group">
-              <label for="testCode">Test Code</label>
-              <input type="text" class="form-control" id="testCode" formControlName="testCode">
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description" formControlName="description"></textarea>
-            </div>
-            <div class=" form-group">
-                <label for="termsCondition">Terms & Condition</label>
-                <div class="editor">
-                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
-                    </ngx-editor-menu>
-                    <ngx-editor [editor]="editor" formControlName="termsCondition">
-                    </ngx-editor>
-                </div>
-            </div>
-            <!-- <button type="submit" class="btn btn-primary" [disabled]="!testForm.valid">Submit</button> -->
-          </form>
-          
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="testName" class="required-field">Test Name</label>
+          <input type="text" placeholder="Enter Test Name" class="form-control" id="testName"
+            formControlName="testName">
+
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="testCode" class="required-field">Test Code</label>
+          <input type="text" placeholder="Enter Test Code" class="form-control" id="testCode"
+            formControlName="testCode">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="required-field">Description</label>
+        <textarea rows="3" placeholder="Enter Description" class="form-control" id="description"
+          formControlName="description"></textarea>
+      </div>
+      <div class=" form-group">
+        <label for="termsCondition" class="required-field">Terms & Condition</label>
+        <div class="editor">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+          <ngx-editor [editor]="editor" formControlName="termsCondition">
+          </ngx-editor>
+        </div>
+      </div>
+      <!-- <button type="submit" class="btn btn-primary" [disabled]="!testForm.valid">Submit</button> -->
+
     </div>
 
-    <button class="btn btn-success" >
-        Save
+    <button type="submit" [disabled]="!testForm.valid" class="last-submit-btn btn btn-success">
+      Save
     </button>
+  </form>
 </div>

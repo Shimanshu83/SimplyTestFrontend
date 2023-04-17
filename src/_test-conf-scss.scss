@@ -1,9 +1,105 @@
-h5  {
+.initial-heading {
     font-weight: 600;
-    margin-bottom : 20px ; 
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
-.common-container-test{
-    border-radius : 8px ; 
-    padding : 32px ; 
+.test-heading {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.basic-test-from {
+    width: 70%;
+}
+
+label {
+
+    color: grey;
+    font-weight: 500;
+    // font-size: 0.8rem;
+}
+
+.required-field::after {
+    content: "*";
+    color: red;
+}
+
+.last-submit-btn {
+    margin-top: 0px 0px 20px 0px !important;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.common-container-test {
+    border-radius: 8px;
+    padding: 32px;
+}
+
+input {
+    &:hover {
+        border: 1px solid black;
+        box-shadow: none;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid var(--secondaryColors);
+}
+
+
+.editor {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    .NgxEditor__MenuBar {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .NgxEditor {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border: none;
+
+        &:focus {
+            border: 1px solid var(--secondaryColors);
+        }
+
+
+    }
+
+    .ProseMirror {
+
+        &:focus {
+            border: 1px solid var(--secondaryColors);
+        }
+
+        min-height: 100px;
+    }
+
+    .CodeMirror {
+        border: 1px solid var(--secondaryColors);
+        height: auto;
+        margin-bottom: 0.7rem;
+
+        pre {
+            white-space: pre !important;
+        }
+    }
+}
+
+// error message 
+
+.error {
+    font-size: smaller;
+    margin: 4px 15px;
 }

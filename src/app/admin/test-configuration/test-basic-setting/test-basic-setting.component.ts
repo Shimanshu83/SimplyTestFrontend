@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {  Editor, Toolbar } from 'ngx-editor';
+import { Editor, Toolbar } from 'ngx-editor';
+import { AdminService } from '../../admin.service';
 @Component({
   selector: 'app-test-basic-setting',
   templateUrl: './test-basic-setting.component.html',
@@ -9,7 +10,7 @@ import {  Editor, Toolbar } from 'ngx-editor';
 export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
   testForm: FormGroup;
-  
+
   editor: Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -24,7 +25,7 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private adminService: AdminService) { }
 
   ngOnInit(): void {
 
@@ -43,6 +44,7 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.testForm.value);
+    this.adminService.testState.next('basicSettingDone');
   }
 
 

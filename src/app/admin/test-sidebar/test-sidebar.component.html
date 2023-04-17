@@ -10,21 +10,25 @@
 
         <h5>Test Configuration</h5>
         <ul>
-            <li class="sidebar-btn-active" routerLinkActive="sidebar-btn-selected"  [routerLink]="['basic-setting']" >
+            <li class="sidebar-btn-active" routerLinkActive="sidebar-btn-selected" [routerLink]="['basic-setting']">
                 <i class="bi bi-gear-fill"></i>
-                    <span > Basic Setting   </span>        
+                <span> Basic Setting </span>
             </li>
-            <li class="sidebar-btn-inactive" [routerLink]="['question-manager']"   routerLinkActive="sidebar-btn-selected" >
+            <li [ngClass]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+                [routerLink]="['question-manager']"
+                [routerLinkActive]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
                 <i class="bi bi-question-octagon-fill"></i>
 
-                <span> Question Manager  </span>
-                       
+                <span> Question Manager </span>
+
             </li>
 
-            <li routerLinkActive="sidebar-btn-selected" [routerLink]="['time-access-setting']"  >
+            <li [ngClass]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+                [routerLink]="['time-access-setting']"
+                [routerLinkActive]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
                 <i class="bi bi-calendar2-check-fill"></i>
                 <span>
-                    Time / Access Setting 
+                    Time / Access Setting
                 </span>
             </li>
         </ul>
@@ -34,10 +38,12 @@
     <div class="test-side-navbar">
 
         <h5>Result Management</h5>
-        <ul > 
-            <li routerLinkActive="sidebar-btn-selected" [routerLink]="['result-table']"   >
+        <ul>
+            <li [ngClass]="(testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+                [routerLinkActive]="(testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'"
+                [routerLink]="['result-table']">
                 <i class="bi bi-gear-fill"></i>
-                    <span > Result Table   </span>        
+                <span> Result Table </span>
             </li>
         </ul>
 

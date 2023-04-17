@@ -4,14 +4,22 @@ import { HttpClient } from "@angular/common/http"
 
 
 @Injectable()
-export class AdminService{
+export class AdminService {
+    /**
+     * initialize
+     * basicSettingDone -->
+     * Activated ---> 
+     * 
+     */
+    testState = new BehaviorSubject("initialize");
+
+    constructor(private httpClient: HttpClient) {
 
 
-    constructor(private httpClient : HttpClient ){
 
     }
 
-    getTestList(){
+    getTestList() {
         return this.httpClient.get<any>("assets/test-listing-response.json");
     }
 }
