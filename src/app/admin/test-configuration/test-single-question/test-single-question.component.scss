@@ -5,3 +5,76 @@
     flex-direction : row ;
     gap : 20px ; 
 }
+
+.headings{
+    font-weight: 700;
+}
+
+.paragaraph-class{
+    font-size: 14px;
+}
+
+.option-container{
+    display:  flex;
+    flex-direction: row;
+    gap : 20px ; 
+
+    .choose-answers{
+        margin-top : 10px ; 
+    }
+    .editor{
+        flex-grow : 1 ; 
+    }
+
+    .delete-option{
+        margin-top : 10px ; 
+    }
+    
+}
+
+.add-option-button{
+    padding : 8px ; 
+    border : 1px solid grey ; 
+    color : grey ; 
+    text-align:  center;
+    background-color: white;
+    border-radius: var(--border-radius);
+    margin-bottom: 40px ;
+
+    &:hover{
+        color : var( --secondaryColors ); 
+        border-color:  var(--secondaryColors);
+    }
+
+    &:focus{
+        color : var( --secondaryColors ); 
+        border-color:  var(--secondaryColors);
+        box-shadow : 0 0 2px 2px  var(--secondaryColors);
+    }
+}
+
+// .add-option-button{
+//     padding : 2px ; 
+//     &:focus{
+//         border : 1px solid  var(--secondaryColors) ; 
+//     }
+// }
+
+.delete-option-btn{
+    border : none ; 
+    background-color: white ;
+    font-size: 18px;
+    // padding : 2px ; 
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(247, 241, 241);
+    }
+}
+
+
+
+.basic-test-from{
+    width : 80% !important ; 
+}
+
+

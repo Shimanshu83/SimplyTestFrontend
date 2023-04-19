@@ -1,20 +1,87 @@
 <div class="test-basic-setting-container">
-    <h5 class="test-heading"> Test Manager </h5> 
-  
-<div class="common-boxing">
+  <h5 class="test-heading"> Test Manager </h5>
 
-</div>
+  <div class="common-boxing">
+    <form [formGroup]="myForm" class="basic-test-from">
+      <div class=" form-group">
+        <div class="editor">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+          <ngx-editor [editor]="editor" formControlName="question">
+          </ngx-editor>
+        </div>
+      </div>
 
-<div class="bottom-save-btn">
-    <button type="submit"  class="last-submit-btn btn btn-success">
-        Save
-      </button>
+      <h6 class="headings">Answers</h6>
+      <p class="paragaraph-class">After providing possible answers, select the correct one.</p>
 
-      <button type="submit"  class="last-submit-btn btn btn-success">
-        Save & add next
-      </button>
+      <div class="formArrayContainer" formArrayName="options">
+        <div *ngFor="let option of options.controls; let i = index">
+          
+          <div class="form-group option-container" [formGroupName]="i">
+            <input class="form-check-input choose-answers" type="radio" name="correct"
+            [id]="'sigle-question' +  i" [value]="1"  formControlName="correct">
 
-      <button class="btn btn-light"> Cancel </button>
-</div>
-    
+            <div class="editor">
+              <ngx-editor-menu [editor]="optionEditorArray[i]" [toolbar]="toolbar">
+              </ngx-editor-menu>
+              <ngx-editor [editor]="optionEditorArray[i]" formControlName="optionText">
+              </ngx-editor>
+            </div>
+
+            <div class="delete-option">
+              <button (click)="deleteOption(i)"  class="delete-option-btn bi bi-trash"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="add-option-container">
+          <button (click)="addOptions()" class="add-option-button">
+            + Add answers
+          </button>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="form-group"> -->
+
+        <h6 class="headings">Score Settings</h6>
+
+      <!-- </div> -->
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="testName" > Points for correct answers</label>
+          <input type="number"  class="form-control" id="testName"
+            formControlName="points">
+
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="testCode" >Points for incorrect answers</label>
+          <input type="number"  class="form-control" id="testCode"
+            formControlName="negativePoints">
+        </div>
+      </div>
+
+
+
+    </form>
+
+
+  </div>
+
+  <div class="bottom-save-btn">
+    <button (click)="onSubmit()" type="submit" class="last-submit-btn btn btn-success">
+      Save
+    </button>
+
+    <button type="submit" class="last-submit-btn btn btn-success">
+      Save & add next
+    </button>
+
+    <button class="btn btn-light"> Cancel </button>
+  </div>
+
 </div>
