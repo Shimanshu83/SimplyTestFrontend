@@ -16,6 +16,7 @@ import { TestModule } from './test/test.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { AdminModule } from './admin/admin.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     TestModule,
-    AdminModule
+    AdminModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

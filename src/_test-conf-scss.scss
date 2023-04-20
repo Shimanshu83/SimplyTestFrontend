@@ -38,7 +38,7 @@ label {
     padding: 32px;
 }
 
-input {
+input ,select {
     &:hover {
         border: 1px solid black;
         box-shadow: none;
@@ -49,9 +49,19 @@ input {
     }
 }
 
-.form-control:focus {
+.form-control:focus , .form-select:focus {
     box-shadow: none;
     border: 1px solid var(--secondaryColors);
+}
+
+ option {
+    &:hover{
+        background-color:var(--secondaryColors) ;
+    }
+
+    &:focus{
+        background-color: var(--secondaryColors);
+    }
 }
 
 
@@ -103,3 +113,19 @@ input {
     font-size: smaller;
     margin: 4px 15px;
 }
+
+
+.form-check-input {
+
+    &:checked{
+
+        background-color: var(--secondaryColors); /* blue color */
+        border-color: var(--secondaryColors);
+    }
+
+    &:focus{
+        
+        box-shadow: 0 0 0 0.2rem var(--secondaryShadow); ;
+    }
+   
+  }

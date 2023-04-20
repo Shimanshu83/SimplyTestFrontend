@@ -30,6 +30,33 @@ export class TestConfigurationService {
     correct : null 
    }
 
+   questions = [{
+    "question": "<h6><strong>Which is the interpreted programming language ?</strong></h6>",
+    "options": [
+        {
+            "optionText": "<p>javascript</p>",
+            "correct": true
+        },
+        {
+            "optionText": "<p>java</p>",
+            "correct": false
+        },
+        {
+            "optionText": "<p>python</p>",
+            "correct": true
+        },
+        {
+            "optionText": "<p>c#</p>",
+            "correct": false
+        }
+    ],
+    "points": 1,
+    "negativePoints": 0,
+    "optionChoice": "2",
+    "id": 13462456
+}] ; 
 
-   constructor(private httpClient  : HttpClient ){}
+   constructor(private httpClient  : HttpClient ){
+    
+   }
 }

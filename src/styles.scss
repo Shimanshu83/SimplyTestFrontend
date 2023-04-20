@@ -18,6 +18,8 @@ $textPrimaryColor : #064751;
     --secondaryColorShades1: #46c87ab2;
     --textPrimaryColor: #064751;
     --sub-text-color: #3d444c;
+    --secondaryShadow : #49c2797c;
+    --tertiaryColor : #bbdfd292; 
 
 
     // default border radius to be setup here 
@@ -80,4 +82,12 @@ body {
 .statusChipSetup {
     color: var(--bs-purple);
     border-color: var(--bs-purple);
+}
+
+
+.options-each-element  p {
+    margin: 0px !important;
+    padding : 5px 20px ; 
+   
+
 }

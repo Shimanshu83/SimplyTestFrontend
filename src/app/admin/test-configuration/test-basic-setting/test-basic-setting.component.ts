@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
 import { AdminService } from '../../admin.service';
 import { TestConfigurationService } from '../test-configuration.service';
+import { CommonMethod }  from '../../../libraries/common-method';
 @Component({
   selector: 'app-test-basic-setting',
   templateUrl: './test-basic-setting.component.html',
@@ -44,6 +45,7 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    CommonMethod.isFormValid(this.testForm); 
     console.log(this.testForm.value);
     this.testConfigurationService.testState.next('basicSettingDone');
   }

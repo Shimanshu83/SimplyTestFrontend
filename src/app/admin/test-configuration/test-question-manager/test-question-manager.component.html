@@ -3,4 +3,32 @@
        <h5 class="test-heading"> Test Manager </h5> 
        <button class="btn btn-success btn-md" [routerLink]="['questions','new_question']" >Add Question</button>
     </div>
+
+    <div class="question-container">
+
+        <div *ngFor="let question of questions; let i = index"  class="common-boxing">
+            <div class="question-mng-heading">
+                <span>Q {{i+1}}</span>
+                <div class="question-mng-heading-right">
+                    <p>Type  <span>   {{question.optionChoice == 1 ?'Single choice' : 'Multiple choice'}}  </span> </p>
+                    <p>Points  <span> {{question.points}} </span> </p>
+                    <p>Negative Points <span>  {{question.negativePoints}}  </span> </p>
+                </div>
+            </div>
+
+            <div class="question-format-container">
+                <div innerHTML="{{question.question}}" class="question-text" >
+
+                </div>
+                <div class="options-container">
+
+                    <div *ngFor="let value of question.options ; let i = index " [ngClass]="value.correct ? 'rightOptions' : '' "   class="options-each-element">
+                        <!-- <i class="bi bi-circle"></i> -->
+                        <div innerHTML="{{value.optionText}}" >  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>

@@ -16,6 +16,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxEditorModule } from "ngx-editor";
 import { TestConfigurationService } from './test-configuration/test-configuration.service';
 import { TestSingleQuestionComponent } from "./test-configuration/test-single-question/test-single-question.component"
+import { SharedModule } from '../sharedModules/shared.module';
+
 
 const routes : Routes = [
   {path : "admin" , component : TestListingComponent},
@@ -51,7 +53,8 @@ const routes : Routes = [
     FormsModule,
     BrowserAnimationsModule,
     BrowserModule,
-    NgxEditorModule
+    NgxEditorModule,
+    SharedModule
   ],
   providers :[
     AdminService,

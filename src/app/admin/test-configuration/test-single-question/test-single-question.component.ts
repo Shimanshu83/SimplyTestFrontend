@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TestConfigurationService } from '../test-configuration.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
+import { CommonMethod } from '../../../libraries/common-method';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-test-single-question',
@@ -16,6 +19,7 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   editor: Editor;
   optionEditorArray: Editor[] = [];
   number = 0;
+  optionErrorMessage : any ; 
   editor2: Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -30,18 +34,17 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   constructor(
     private testConfigurationService: TestConfigurationService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router : Router 
   ) {
-    this.editor = new Editor();
-
-    // so we need to create a new instance of editor class and supply them to the options object
-    // this.editor2 = new Editor() ; 
+    this.editor = new Editor({});
     this.myForm = this.fb.group({
       question: [null, [Validators.required]],
       options: this.fb.array([]),
-      points: [null, [Validators.required]],
-      negativePoints: [null, [Validators.required]],
-      selectedAnswers: [null, [Validators.required]]
+      points: [1, [Validators.required]],
+      negativePoints: [0, [Validators.required]],
+      optionChoice : [1, [Validators.required]]
     });
 
     this.route.params.subscribe(params => {
@@ -51,7 +54,7 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
         this.question_data.options.forEach((element) => {
           this.optionEditorArray.push(new Editor);
           this.options.push(this.fb.group(
-            { optionText: [null, [Validators.required]], correct: [null, [Validators.required]] }
+            { optionText: [null, [Validators.required]], correct: [false, [Validators.required]] }
           ));
         });
 
@@ -70,35 +73,99 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   }
 
   deleteOption(index) {
-
     if (this.optionEditorArray.length > 2) {
       this.options.removeAt(index);
       this.optionEditorArray.splice(index, 1);
     }
     else {
-      // will throw error in flash message showing that this is not allowed. 
+      this.toastr.error('Atlease two options are required');
     }
   }
-  addOptions() {
 
+  optionChecked(event, index) {
+    if( this.myForm.get("optionChoice").value == 1){
+      if (event.target.checked) {
+        let arrayValue = [];
+  
+        Object.keys(this.options).forEach(
+          (value, i) => {
+  
+            if (index == i) {
+  
+              arrayValue.push({ correct: true });
+            }
+  
+            arrayValue.push({ correct: false });
+  
+          }
+        )
+        this.options.patchValue(arrayValue);
+      }
+    }
+
+    // check if error message is there or not. 
+    let selectedOptionArray = this.options.value.filter(elem => elem.correct == true );
+    if(selectedOptionArray.length > 0){
+      this.optionErrorMessage = null ; 
+    }
+  }
+
+  isOptionSelected(){
+    let selectedOptionArray = this.options.value.filter(elem => elem.correct == true );
+    if(selectedOptionArray.length == 0 ){
+      this.optionErrorMessage = "Select any options";
+      return false ; 
+    }
+    return true; 
+  }
+
+  resetOptions(){
+    let arrayValue = [];
+    Object.keys(this.options).forEach(
+      (value) => {
+        arrayValue.push({ correct: false });
+      }
+    )
+    this.options.patchValue(arrayValue);
+  }
+
+  addOptions() {
     if (this.optionEditorArray.length < 8) {
       this.optionEditorArray.push(new Editor);
       this.options.push(this.fb.group(
-        { optionText: [null, [Validators.required]], correct: [null, [Validators.required]] }
+        { optionText: [null, [Validators.required]], correct: [false, [Validators.required]] }
       ));
     }
-    else{
-      // throw error more than 8 options are not allowed after implementing flash message thanks
+    else {
+      this.toastr.error('More then 8 options are not allowed');
     }
 
   }
 
 
   ngOnDestroy(): void {
+    // deleting all edior instances 
     this.editor.destroy();
+    this.optionEditorArray.forEach(editor => {
+      this.editor.destroy();
+    })
   }
 
-  onSubmit(): void {
-    console.log(this.myForm.value);
+  onSubmit(btnType): void {
+    let optionValid = this.isOptionSelected() ; 
+    if(CommonMethod.isFormValid(this.myForm) && optionValid ){
+      let id = Math.floor(Math.random() * 100000000);
+      this.testConfigurationService.questions.push({...this.myForm.value, "id" : id}); 
+      console.log({...this.myForm.value, "id" : id});
+      setTimeout(() => {
+
+        if(btnType == "save"){
+          this.router.navigate(["../../"], { relativeTo: this.route });
+        }
+        else{
+          this.router.navigate(["../../"], { queryParams: { redirect : true } ,  relativeTo: this.route});
+        }
+      }, 2000);
+    }
   }
 }

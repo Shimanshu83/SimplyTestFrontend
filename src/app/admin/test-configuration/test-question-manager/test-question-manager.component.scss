@@ -3,3 +3,98 @@
     flex-direction: row ;
     justify-content: space-between;
 }
+
+.question-container{
+    margin-top : 25px ; 
+    margin-bottom : 25px ; 
+    cursor : pointer ; 
+    border-radius: 10px;
+   
+}
+
+.common-boxing{
+    display : flex ; 
+    flex-direction: column ; 
+
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        // transform : scale(1.1) ; 
+    }
+    .question-mng-heading{
+
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size : 15px ; 
+
+        & > span {
+            font-weight: 900;
+        }
+
+        .question-mng-heading-right{
+            display: flex;
+
+            gap : 10px ; 
+
+            p {
+                color : grey ; 
+                border-right : 1px solid grey ; 
+                padding-right : 10px ; 
+
+            }
+
+            p:nth-child(3){
+                border : none ; 
+            }
+
+            span{
+                margin-left : 5px ; 
+                color : black ; 
+                font-weight: 400;
+            }
+        }
+
+        
+    }
+
+
+    .question-format-container{
+        width : 70% ; 
+        padding : 5px 20px  ; 
+    
+        .rightOptions{
+            background-color: var(--tertiaryColor);
+
+            border-radius : var(--border-radius) ; 
+        }
+
+        .options-container{
+            margin :15px  10px  ; 
+            p{
+                margin : none ; 
+                padding : none ; 
+            }
+        }
+
+        
+        
+    }
+
+
+}
+
+
+
+.options-each-element{
+    display: flex;
+    align-items: center;
+    // border : 1px solid red ; 
+
+   
+}
+
+
+
+
+

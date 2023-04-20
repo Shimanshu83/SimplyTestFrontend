@@ -7,32 +7,56 @@
         <div class="editor">
           <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
           </ngx-editor-menu>
-          <ngx-editor [editor]="editor" formControlName="question">
+          <ngx-editor [editor]="editor" outputFormat="html" formControlName="question">
           </ngx-editor>
         </div>
+        <app-validation-error-message [control]="myForm.get('question')"></app-validation-error-message>
       </div>
 
+      <div class="form-group col-md-12">
+        <label for="testCode">Points for incorrect answers</label>
+        <select class="form-select" formControlName="optionChoice" (change)="resetOptions()"
+          aria-label="Default select example">
+          <option value="1">Single Choice</option>
+          <option value="2">Multiple Choice</option>
+        </select>
+        <app-validation-error-message [control]="myForm.get('optionChoice')"></app-validation-error-message>
+
+      </div>
+
+
       <h6 class="headings">Answers</h6>
+
       <p class="paragaraph-class">After providing possible answers, select the correct one.</p>
 
+      <div  class="text-danger">
+        <div class="error" *ngIf="optionErrorMessage">{{optionErrorMessage}}</div>
+    </div>
       <div class="formArrayContainer" formArrayName="options">
         <div *ngFor="let option of options.controls; let i = index">
-          
+
           <div class="form-group option-container" [formGroupName]="i">
-            <input class="form-check-input choose-answers" type="radio" name="correct"
-            [id]="'sigle-question' +  i" [value]="1"  formControlName="correct">
 
-            <div class="editor">
-              <ngx-editor-menu [editor]="optionEditorArray[i]" [toolbar]="toolbar">
-              </ngx-editor-menu>
-              <ngx-editor [editor]="optionEditorArray[i]" formControlName="optionText">
-              </ngx-editor>
+            <input class="form-check-input choose-answers" (change)="optionChecked($event ,i)" type="checkbox"
+              formControlName="correct" id="flexCheckChecked">
+
+            <div class="editor-container">
+
+
+              <div class="editor">
+                <ngx-editor-menu [editor]="optionEditorArray[i]" [toolbar]="toolbar">
+                </ngx-editor-menu>
+                <ngx-editor outputFormat="html" [editor]="optionEditorArray[i]" formControlName="optionText">
+                </ngx-editor>
+              </div>
+              <app-validation-error-message [control]="options.at(i).get('optionText')"></app-validation-error-message>
+
             </div>
-
             <div class="delete-option">
-              <button (click)="deleteOption(i)"  class="delete-option-btn bi bi-trash"></button>
+              <button (click)="deleteOption(i)" class="delete-option-btn bi bi-trash"></button>
             </div>
           </div>
+
         </div>
 
         <div class="add-option-container">
@@ -41,47 +65,40 @@
           </button>
         </div>
       </div>
-
-
-
       <!-- <div class="form-group"> -->
 
-        <h6 class="headings">Score Settings</h6>
+      <h6 class="headings">Score Settings</h6>
 
       <!-- </div> -->
 
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="testName" > Points for correct answers</label>
-          <input type="number"  class="form-control" id="testName"
-            formControlName="points">
-
-
+          <label for="testName"> Points for correct answers</label>
+          <input type="number" class="form-control" id="testName" formControlName="points">
+          <app-validation-error-message [control]="myForm.get('points')"></app-validation-error-message>
         </div>
         <div class="form-group col-md-6">
-          <label for="testCode" >Points for incorrect answers</label>
-          <input type="number"  class="form-control" id="testCode"
-            formControlName="negativePoints">
+          <label for="testCode">Points for incorrect answers</label>
+          <input type="number" class="form-control" id="testCode" formControlName="negativePoints">
+          <app-validation-error-message [control]="myForm.get('negativePoints')"></app-validation-error-message>
+
         </div>
       </div>
-
-
-
     </form>
 
 
   </div>
 
   <div class="bottom-save-btn">
-    <button (click)="onSubmit()" type="submit" class="last-submit-btn btn btn-success">
+    <button (click)="onSubmit('save')" type="submit" class="last-submit-btn btn btn-success">
       Save
     </button>
 
-    <button type="submit" class="last-submit-btn btn btn-success">
+    <button type="submit" (click)="onSubmit('saveAndNext')"  class="last-submit-btn btn btn-success">
       Save & add next
     </button>
 
-    <button class="btn btn-light"> Cancel </button>
+    <button class="btn btn-light" routerLink="../../" > Cancel </button>
   </div>
 
 </div>
