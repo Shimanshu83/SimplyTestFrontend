@@ -14,9 +14,9 @@
                 <i class="bi bi-gear-fill"></i>
                 <span> Basic Setting </span>
             </li>
-            <li [ngClass]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+            <li [ngClass]="(testStatus >= 2 ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
                 [routerLink]="['question-manager']"
-                [routerLinkActive]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
+                [routerLinkActive]="(testStatus >= 2 ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
 
 
                 <i class="bi bi-question-octagon-fill"></i>
@@ -26,9 +26,9 @@
 
             </li>
 
-            <li [ngClass]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+            <li [ngClass]="(testStatus >= 2) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
                 [routerLink]="['time-access-setting']"
-                [routerLinkActive]="(testStatus == 'basicSettingDone' || testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
+                [routerLinkActive]="(testStatus >= 2 ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'">
                 <i class="bi bi-calendar2-check-fill"></i>
                 <span>
                     Time / Access Setting
@@ -42,8 +42,8 @@
 
         <h5>Result Management</h5>
         <ul>
-            <li [ngClass]="(testStatus == 'Activated' ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
-                [routerLinkActive]="(testStatus == 'Activated' ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'"
+            <li [ngClass]="(testStatus == 4 ) ? 'sidebar-btn-active' : 'sidebar-btn-inactive'"
+                [routerLinkActive]="(testStatus == 4 ) ? 'sidebar-btn-selected' : 'sidebar-btn-inactive'"
                 [routerLink]="['result-table']">
                 <i class="bi bi-gear-fill"></i>
                 <span> Result Table </span>

@@ -6,7 +6,7 @@
 
     <div class="question-container">
 
-        <div *ngFor="let question of questions; let i = index"  class="common-boxing">
+        <div *ngFor="let question of questions; let i = index"  class="common-boxing" [routerLink]="['questions' , question.id]" >
             <div class="question-mng-heading">
                 <span>Q {{i+1}}</span>
                 <div class="question-mng-heading-right">

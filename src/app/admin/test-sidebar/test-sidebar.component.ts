@@ -10,7 +10,7 @@ import { TestConfigurationService } from '../test-configuration/test-configurati
 export class TestSidebarComponent implements OnInit {
 
 
-  testStatus: string;
+  testStatus: number;
   constructor(private adminService: AdminService, private testConfigurationService : TestConfigurationService) { }
 
   ngOnInit(): void {

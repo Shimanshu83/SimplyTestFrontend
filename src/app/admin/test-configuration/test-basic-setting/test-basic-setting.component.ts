@@ -47,9 +47,8 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
   onSubmit() {
     CommonMethod.isFormValid(this.testForm); 
     console.log(this.testForm.value);
-    this.testConfigurationService.testState.next('basicSettingDone');
+    this.testConfigurationService.testState.next(2);
   }
-
 
   ngOnDestroy(): void {
     this.editor.destroy();

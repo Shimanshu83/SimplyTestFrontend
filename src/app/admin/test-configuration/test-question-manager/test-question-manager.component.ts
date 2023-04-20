@@ -22,7 +22,7 @@ export class TestQuestionManagerComponent implements OnInit{
     this.route.queryParams.subscribe(
       value => {
        if(value['redirect'] == "true"){
-        this.router.navigate(["questions/new_questions"],{relativeTo : this.route})
+        this.router.navigate(["questions/new_question"],{relativeTo : this.route})
        }
       }
     );

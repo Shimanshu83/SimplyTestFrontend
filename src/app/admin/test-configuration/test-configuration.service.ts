@@ -6,12 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 export class TestConfigurationService {
     
     /**
-     * initialize
-     * basicSettingDone -->
-     * Activated ---> 
+     * initialize 1
+     * basicSettingDone 2
+     * qeustionAdded 3
+     * Activated 4
      * 
     */
-   testState = new BehaviorSubject("basicSettingDone");
+   testState = new BehaviorSubject(1);
 
    newQuestion = {
     "questions" : null, 
@@ -53,10 +54,14 @@ export class TestConfigurationService {
     "points": 1,
     "negativePoints": 0,
     "optionChoice": "2",
-    "id": 13462456
+    "id": "13462456"
 }] ; 
 
    constructor(private httpClient  : HttpClient ){
     
+   }
+
+   getQuestionById(id){
+    return this.questions.filter( question => question.id == id ) ; 
    }
 }

@@ -21,6 +21,8 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   number = 0;
   optionErrorMessage : any ; 
   editor2: Editor;
+  editMode : boolean = false ; 
+  questionId : string ; 
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -59,7 +61,34 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
         });
 
       }
+      else{
+        this.questionId = id ; 
+        let questionData  = this.testConfigurationService.getQuestionById(this.questionId)[0] ; 
+        // this.myForm.patchValue(questionData) ; 
+        this.patchQuestionData(questionData); 
+        this.editMode = true ; 
+
+      }
     });
+  }
+
+  patchQuestionData(questionData ){
+    // need to add value in two manner first add all the values except options 
+    // then add options values 
+    this.myForm.patchValue({
+      question : questionData.question,
+      points : questionData.points,
+      negativePoints : questionData.negativePoints,
+      optionChoice : questionData.optionChoice
+    })
+
+    for( let option of questionData.options ){
+      this.optionEditorArray.push( new Editor() ); 
+      this.options.push(this.fb.group(
+        { optionText: [option.optionText, [Validators.required]], correct: [option.correct, [Validators.required]] }
+      )); 
+    }
+
   }
 
 
@@ -154,9 +183,13 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   onSubmit(btnType): void {
     let optionValid = this.isOptionSelected() ; 
     if(CommonMethod.isFormValid(this.myForm) && optionValid ){
-      let id = Math.floor(Math.random() * 100000000);
-      this.testConfigurationService.questions.push({...this.myForm.value, "id" : id}); 
-      console.log({...this.myForm.value, "id" : id});
+
+      if(this.editMode == true ){
+        this.updateQuestion(this.myForm.value); 
+      }
+      else{
+        this.saveQuestion(this.myForm.value); 
+      }
       setTimeout(() => {
 
         if(btnType == "save"){
@@ -165,7 +198,32 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
         else{
           this.router.navigate(["../../"], { queryParams: { redirect : true } ,  relativeTo: this.route});
         }
-      }, 2000);
+      }, 500);
+    
+
     }
   }
+
+  saveQuestion(myFormValue){
+    let id =  Math.floor(Math.random() * 100000000);
+    this.testConfigurationService.questions.push({...myFormValue , "id" : id}); 
+    return true 
+  }
+  updateQuestion(myFormValue){
+
+    // find out the index of the questions in the element and update them directly 
+
+    let questionIndex ; 
+    this.testConfigurationService.questions.forEach((question , index ) => {
+      if(this.questionId = question.id ){
+        questionIndex = index ; 
+      }
+    } )
+
+    this.testConfigurationService.questions[questionIndex] = {id : this.questionId , ...myFormValue}; 
+    return
+  }
+
+
+  
 }
