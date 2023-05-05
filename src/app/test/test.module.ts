@@ -15,7 +15,7 @@ import { QuestionPalletComponent } from './test-questions/question-pallet/questi
 
 
 const routes: Routes = [
-  { path: 'test', component: TestComponentComponent }
+  { path: 'test/:testId', component: TestComponentComponent }
 ]
 
 @NgModule({

@@ -18,12 +18,12 @@ export class TestService {
 
   }
 
-  getTestDetail() {
-    return this.httpClient.get<any>("assets/test-detail.json");
+  getTestDetail(testId) {
+    return this.httpClient.get<any>(`/api/test/get-basic-test-info?questionCampaignId=${testId}`);
   }
 
 
-  submitUserAndGetTestData() {
-    return this.httpClient.get<any>("assets/question-response.json");
+  submitUserAndGetTestData(formData) {
+    return this.httpClient.post<any>("/api/test/start-test",formData);
   }
 }
