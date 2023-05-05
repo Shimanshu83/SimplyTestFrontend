@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TestConfigurationService } from '../test-configuration.service';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
 import { CommonMethod } from '../../../libraries/common-method';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,10 +20,10 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   editor: Editor;
   optionEditorArray: Editor[] = [];
   number = 0;
-  optionErrorMessage : any ; 
+  optionErrorMessage: any;
   editor2: Editor;
-  editMode : boolean = false ; 
-  questionId : string ; 
+  editMode: boolean = false;
+  questionId: string;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -33,20 +34,23 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
     ['text_color', 'background_color'],
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
+
+  questionCampaignId: any; // save the questionCampaign through which we will save the data 
   constructor(
     private testConfigurationService: TestConfigurationService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private router : Router 
+    private router: Router,
+    private httpClient: HttpClient
   ) {
     this.editor = new Editor({});
     this.myForm = this.fb.group({
-      question: [null, [Validators.required]],
+      questionText: [null, [Validators.required]],
       options: this.fb.array([]),
-      points: [1, [Validators.required]],
-      negativePoints: [0, [Validators.required]],
-      optionChoice : [1, [Validators.required]]
+      correctAnswerPoint: [1, [Validators.required]],
+      incorrectAnswerPoint: [0, [Validators.required]],
+      questionType: ['single', [Validators.required]]
     });
 
     this.route.params.subscribe(params => {
@@ -56,37 +60,37 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
         this.question_data.options.forEach((element) => {
           this.optionEditorArray.push(new Editor);
           this.options.push(this.fb.group(
-            { optionText: [null, [Validators.required]], correct: [false, [Validators.required]] }
+            { optionText: [null, [Validators.required]], selected: [false, [Validators.required]] }
           ));
         });
 
       }
-      else{
-        this.questionId = id ; 
-        let questionData  = this.testConfigurationService.getQuestionById(this.questionId)[0] ; 
+      else {
+        this.questionId = id;
+        let questionData = this.testConfigurationService.getQuestionById(this.questionId)[0];
         // this.myForm.patchValue(questionData) ; 
-        this.patchQuestionData(questionData); 
-        this.editMode = true ; 
+        this.patchQuestionData(questionData);
+        this.editMode = true;
 
       }
     });
   }
 
-  patchQuestionData(questionData ){
+  patchQuestionData(questionData) {
     // need to add value in two manner first add all the values except options 
     // then add options values 
     this.myForm.patchValue({
-      question : questionData.question,
-      points : questionData.points,
-      negativePoints : questionData.negativePoints,
-      optionChoice : questionData.optionChoice
+      questionText: questionData.questionText,
+      correctAnswerPoint: questionData.correctAnswerPoint,
+      incorrectAnswerPoint: questionData.incorrectAnswerPoint,
+      questionType: questionData.questionType
     })
 
-    for( let option of questionData.options ){
-      this.optionEditorArray.push( new Editor() ); 
+    for (let option of questionData.options) {
+      this.optionEditorArray.push(new Editor());
       this.options.push(this.fb.group(
-        { optionText: [option.optionText, [Validators.required]], correct: [option.correct, [Validators.required]] }
-      )); 
+        { optionText: [option.optionText, [Validators.required]], selected: [option.selected, [Validators.required]] }
+      ));
     }
 
   }
@@ -94,6 +98,10 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+
+    this.testConfigurationService.questionCampaignIdData.subscribe(value => {
+      this.questionCampaignId = value;
+    })
 
   }
 
@@ -112,20 +120,20 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   }
 
   optionChecked(event, index) {
-    if( this.myForm.get("optionChoice").value == 1){
+    if (this.myForm.get("questionType").value == 'single') {
       if (event.target.checked) {
         let arrayValue = [];
-  
+
         Object.keys(this.options).forEach(
           (value, i) => {
-  
+
             if (index == i) {
-  
-              arrayValue.push({ correct: true });
+
+              arrayValue.push({ selected: true });
             }
-  
-            arrayValue.push({ correct: false });
-  
+
+            arrayValue.push({ selected: false });
+
           }
         )
         this.options.patchValue(arrayValue);
@@ -133,26 +141,26 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
     }
 
     // check if error message is there or not. 
-    let selectedOptionArray = this.options.value.filter(elem => elem.correct == true );
-    if(selectedOptionArray.length > 0){
-      this.optionErrorMessage = null ; 
+    let selectedOptionArray = this.options.value.filter(elem => elem.selected == true);
+    if (selectedOptionArray.length > 0) {
+      this.optionErrorMessage = null;
     }
   }
 
-  isOptionSelected(){
-    let selectedOptionArray = this.options.value.filter(elem => elem.correct == true );
-    if(selectedOptionArray.length == 0 ){
+  isOptionSelected() {
+    let selectedOptionArray = this.options.value.filter(elem => elem.selected == true);
+    if (selectedOptionArray.length == 0) {
       this.optionErrorMessage = "Select any options";
-      return false ; 
+      return false;
     }
-    return true; 
+    return true;
   }
 
-  resetOptions(){
+  resetOptions() {
     let arrayValue = [];
     Object.keys(this.options).forEach(
       (value) => {
-        arrayValue.push({ correct: false });
+        arrayValue.push({ selected: false });
       }
     )
     this.options.patchValue(arrayValue);
@@ -162,7 +170,7 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
     if (this.optionEditorArray.length < 8) {
       this.optionEditorArray.push(new Editor);
       this.options.push(this.fb.group(
-        { optionText: [null, [Validators.required]], correct: [false, [Validators.required]] }
+        { optionText: [null, [Validators.required]], selected: [false, [Validators.required]] }
       ));
     }
     else {
@@ -181,49 +189,67 @@ export class TestSingleQuestionComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(btnType): void {
-    let optionValid = this.isOptionSelected() ; 
-    if(CommonMethod.isFormValid(this.myForm) && optionValid ){
+    let optionValid = this.isOptionSelected();
+    if (CommonMethod.isFormValid(this.myForm) && optionValid) {
 
-      if(this.editMode == true ){
-        this.updateQuestion(this.myForm.value); 
+      if (this.editMode == true) {
+        this.updateQuestion(this.myForm.value);
       }
-      else{
-        this.saveQuestion(this.myForm.value); 
+      else {
+        this.saveQuestion(this.myForm.value);
       }
       setTimeout(() => {
 
-        if(btnType == "save"){
+        if (btnType == "save") {
           this.router.navigate(["../../"], { relativeTo: this.route });
         }
-        else{
-          this.router.navigate(["../../"], { queryParams: { redirect : true } ,  relativeTo: this.route});
+        else {
+          this.router.navigate(["../../"], { queryParams: { redirect: true }, relativeTo: this.route });
         }
       }, 500);
-    
+
 
     }
   }
 
-  saveQuestion(myFormValue){
-    let id =  Math.floor(Math.random() * 100000000);
-    this.testConfigurationService.questions.push({...myFormValue , "id" : id}); 
-    return true 
+  saveQuestion(myFormValue) {
+    // console.log(myFormValue);
+    // throw new Error('asd');
+    // let id = Math.floor(Math.random() * 100000000);
+    console.log(this.questionCampaignId)
+    this.httpClient.post<any>("/api/question-campaign/add-question", { ...myFormValue, questionCampaignId: this.questionCampaignId }).subscribe(data => {
+
+
+      console.log(data)
+      if (data.status == true) {
+        this.testConfigurationService.questions.push(data.values);
+        this.toastr.success("Question added successfully");
+
+      }
+      else {
+        this.toastr.success("Something went wrong");
+
+      }
+
+    })
+
+    return true
   }
-  updateQuestion(myFormValue){
+  updateQuestion(myFormValue) {
 
     // find out the index of the questions in the element and update them directly 
 
-    let questionIndex ; 
-    this.testConfigurationService.questions.forEach((question , index ) => {
-      if(this.questionId = question.id ){
-        questionIndex = index ; 
+    let questionIndex;
+    this.testConfigurationService.questions.forEach((question, index) => {
+      if (this.questionId = question.id) {
+        questionIndex = index;
       }
-    } )
+    })
 
-    this.testConfigurationService.questions[questionIndex] = {id : this.questionId , ...myFormValue}; 
+    this.testConfigurationService.questions[questionIndex] = { id: this.questionId, ...myFormValue };
     return
   }
 
 
-  
+
 }

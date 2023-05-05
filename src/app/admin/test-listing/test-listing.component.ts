@@ -8,15 +8,15 @@ import { AdminService } from '../admin.service';
 })
 export class TestListingComponent implements OnInit {
 
-  testList : any = [] ; 
-  constructor( private adminService : AdminService ){}
+  testList: any = [];
+  constructor(private adminService: AdminService) { }
 
-  ngOnInit() : void {
-    this.adminService.getTestList().subscribe( response => {
+  ngOnInit(): void {
+    this.adminService.getTestList().subscribe(response => {
 
-      if(response.status == true){
-        this.testList = response.data.test_list ; 
+      if (response.status == true) {
+        this.testList = response.values;
       }
-    } )
+    })
   }
 }

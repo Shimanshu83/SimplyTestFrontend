@@ -6,29 +6,31 @@
             My Tests (9)
         </h5>
 
-        <div [routerLink]="['iuedas-asdfasdfa-asdfasdf-acvas']" class="btn btn-md btn-success">
+        <div [routerLink]="['newTestCampaign']" class="btn btn-md btn-success">
             New Test
         </div>
 
-        
+
     </div>
 
     <div class="flex-grid ">
-        <div class="test-detail  common-boxing"  *ngFor="let test of testList ; index as i  "  >
-            <div class="test-status"  >
+        <div class="test-detail  common-boxing" [routerLink]="[test['_id']]"
+            *ngFor="let test of testList ; index as i  ">
+            <div class="test-status">
 
                 <div class="status-chip-cotainer">
-                    <div class="status-chip" [ngClass]="{statusChipActive : test.status == 'active' ,statusChipInactive : test.status == 'inactive' ,statusChipSetup : test.status == 'setup in progress'   }" >
+                    <div class="status-chip"
+                        [ngClass]="{statusChipActive : test.status == 'active' ,statusChipInactive : test.status == 'inactive' ,statusChipSetup : test.status == 'setupInProgress'   }">
                         {{test.status}}
-                     </div>
-     
-                     <div class="status-createdat">
-                         CREATED : {{test.created_at}}
-                     </div>
+                    </div>
+
+                    <div class="status-createdat">
+                        CREATED : {{test.createdAt}}
+                    </div>
                 </div>
-                
+
                 <div class="test-delete">
-                    <button   > 
+                    <button>
                         <i class="bi bi-trash"></i>
 
                     </button>
@@ -37,7 +39,7 @@
 
             <div class="test-description-heading">
                 <h4>
-                    {{test.name}}
+                    {{test.testName}}
                 </h4>
 
                 <p>
@@ -45,5 +47,5 @@
                 </p>
             </div>
         </div>
-   </div>
+    </div>
 </div>

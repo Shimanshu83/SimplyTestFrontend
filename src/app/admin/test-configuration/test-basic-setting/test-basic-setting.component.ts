@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
 import { AdminService } from '../../admin.service';
 import { TestConfigurationService } from '../test-configuration.service';
-import { CommonMethod }  from '../../../libraries/common-method';
+import { CommonMethod } from '../../../libraries/common-method';
 @Component({
   selector: 'app-test-basic-setting',
   templateUrl: './test-basic-setting.component.html',
@@ -27,12 +27,21 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private fb: FormBuilder, private adminService: AdminService , private testConfigurationService : TestConfigurationService) { }
+  constructor(private fb: FormBuilder, private adminService: AdminService, private testConfigurationService: TestConfigurationService) { }
 
   ngOnInit(): void {
 
     this.createForm();
     this.editor = new Editor();
+
+    this.testConfigurationService.questionCampaignIdData.subscribe(
+      value => {
+        console.log(value)
+        if (value !== "" && value !== undefined && value !== null) {
+          this.patchFormData(this.testConfigurationService.basicQuestionSetting);
+        }
+      }
+    )
   }
 
   createForm() {
@@ -45,12 +54,18 @@ export class TestBasicSettingComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    CommonMethod.isFormValid(this.testForm); 
+    CommonMethod.isFormValid(this.testForm);
     console.log(this.testForm.value);
     this.testConfigurationService.testState.next(2);
   }
 
   ngOnDestroy(): void {
     this.editor.destroy();
+  }
+
+  patchFormData(formData) {
+    console.log("I am in patch form data")
+    console.log(formData)
+    this.testForm.patchValue(formData);
   }
 }
